@@ -1,0 +1,290 @@
+/*font-family: 'Gluten', cursive;*/
+@media only screen and (min-width: 992px) {
+    .col-sm-13{width: 10%; float:left;}
+    .col-md-1 {width: 8.33%;}
+    .col-md-2 {width: 16.66%;}
+    .col-md-3 {width: 25%;}
+    .col-md-4 {width: 33.33%;}
+    .col-md-5 {width: 41.66%;}
+    .col-md-6 {width: 50%;}
+    .col-md-7 {width: 58.33%;}
+    .col-md-8 {width: 66.66%;}
+    .col-md-9 {width: 75%;}
+    .col-md-10 {width: 83.33%;}
+    .col-md-11 {width: 91.66%;}
+    .col-md-12 {width: 100%;}
+    
+* {box-sizing: border-box;}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body{margin: 0 auto;}
+img{
+    display: block;
+    margin:5px;
+    max-width: 100%;
+}
+a{text-decoration: none;}
+/*a:visited {color: #788d98;}*/   
+a:hover {text-decoration: underline;}
+.icon:before{
+    content: "";
+    padding-right: 10px;
+    border-left: 7px solid #9cb4a4;
+}
+hr{
+    display: none;
+}
+nav{
+    padding:15px;
+    text-align: center;
+    font-family: 'Gluten', cursive;
+}
+nav a{
+    color: #f77b26;
+    text-shadow: 4px 2px 3px #000077;
+    font-size: 1.3vw;
+}
+nav a:hover {
+    padding-bottom: 3px;
+    text-decoration: none;
+    transition-duration: 1s;
+    border-bottom: 2px solid #f77b26;
+    text-shadow: 3px 1px 2px #f77b26;
+    font-size: 1.5vw;
+}
+header {
+    max-width: 100%;
+    margin: 0 40px auto;
+    display: flex;
+    justify-content: space-between;
+}
+#wrap {
+    background-color: #ffffff;
+    margin-top: 100px;
+    padding: 35px 0;
+}
+.content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+footer {
+    background-color: lightblue;
+    padding: 50px;
+}
+footer small {
+    font-size: 12px;
+    margin: auto;
+}
+.row{
+    margin-bottom: 30px;
+}
+.container{
+    margin-top:50px;
+    padding: 10px 0;
+    color:#f77b26;
+}
+.container img{margin: 5px auto;}
+.container:hover{
+    box-shadow: 10px 10px 5px #000077;
+    width: 100%;
+    padding: 30px 0;
+    transition-duration: 0.5s;
+    background: linear-gradient(to bottom, #7927b2, #fb3182);
+}
+.container .col-md-4:hover{
+    border-radius: 10px;
+    background: linear-gradient(to bottom, lightpink, #fb3182);
+}
+li{font-size: 25px;}
+.more{
+    color: darkblue;
+    font-style: italic;
+    font-size: small;
+    cursor: pointer;
+    margin: 0 10px;
+}
+details, summary{display: block;}
+
+.content h3{font-weight: bolder;}
+.content h4{font-style: italic;
+    line-height: 1.5;}
+/*index*/
+#index{
+    background-image: url(../images/bg-index.jpeg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+#index #wrap{
+    background-color: transparent;
+    margin-bottom: 50px;
+}
+.content h1{
+    font-size: 75px;
+    line-height: 1;
+    color: #f77b26;
+    text-shadow: 5px 2px 4px #000077;
+    font-family: 'Gluten', cursive;
+}
+#index section{
+    background-color: #ffffff;
+    text-align: center;
+    padding: 40px;
+}
+.content h2{
+    font-size: 50px;
+    line-height: 1;
+    color: #000077;
+    text-shadow: 4px 2px 3px #f77b26;
+    font-family: 'Gluten', cursive;
+}
+.content p{
+    font-size: 20px;
+    line-height: 1.5;
+
+}
+#index #wrap .content p{
+    color: white;
+    text-shadow: 5px 2px 4px black;
+}
+#index section .content p{
+    color:#000077;
+}
+#index .container h3{
+    font-size: 40px;
+    line-height: 2;
+    color: #f77b26;
+    text-shadow: 4px 2px 3px black;
+    font-family: 'Gluten', cursive;
+}
+.container h4{
+    font-size: 30px;
+    color: #000077;
+}
+.btn{
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Gluten', cursive;
+    max-width: 120px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+    border: 5px solid white;
+}
+.btn:hover{
+    text-decoration: none;
+    background-color: #f77b26;
+    color: white;
+    font-size: 20px;
+    max-width: 140px;
+    line-height: 45px;
+    transition-duration: 1s;
+}
+#other .col-md-3:hover{
+    border-radius: 5px;
+    border: 3px solid #000077;
+}
+/*about*/
+#about{
+    background-image: url(../images/bg-about.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.col{
+    text-align: center;
+    color: darkblue;
+    font-style: italic;
+}
+header h1{
+    text-align: center;
+    color:white;
+    text-shadow: 4px 2px 3px #f77b26;
+    font-family: 'Gluten', cursive;
+}
+
+/*davoi*/
+#davoi{
+    background-image: url(../images/bgdavoi.jpeg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/*thac*/
+#thac{
+    background-image: url(../images/bgthac.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/*comlam*/
+#comlam{
+    background-image: url(../images/bgcomlam.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*SNS*/
+.sns {
+    text-align: center;
+    margin-bottom: 30px;
+    float: right;
+    overflow: auto;
+}
+
+.sns a {
+    width: 50px;
+    padding: 10px;
+    color: #fff;
+    line-height: 2em;
+    text-decoration: none;
+    border-radius: 50%;
+    white-space: nowrap;
+    display: inline-block;
+    
+}
+
+
+.bg-facebook {
+    background: #3a5899;
+}
+
+.bg-facebook:hover, .bg-facebook:focus {
+    background: #1d418d;
+}
+
+.bg-twitter {
+    background: #00acee;
+}
+
+.bg-twitter:hover, .bg-twitter:focus {
+    background: #0b93c7;
+}
+
+.bg-google-plus {
+    background: #db4437;
+}
+
+.bg-google-plus:hover, .bg-google-plus:focus {
+    background: #bb2a1d;
+}
+
+.bg-email {
+    background: #dd5348;
+}
+
+.bg-email:hover, .bg-email:focus {
+    background: #ce3f34;
+}
+
+}

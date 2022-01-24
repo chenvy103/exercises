@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pj3</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Class Marksheet</h1>
+
+    <form>
+        <label for="name" >Họ tên</label>
+        <input class="name" type="text" id="name" name="name"/><br>
+        <label for="math" >Điểm toán</label>
+        <input class="math" type="number" max="10" id="math" name="math"/><br>
+        <label for="physical" >Điểm lý</label>
+        <input class="physical" type="number" max="10" id="physical" name="physical"/><br>
+        <label for="chemistry" >Điểm hóa</label>
+        <input class="chemistry" type="number" max="10" id="chemistry" name="chemistry"/><br>
+        <button type="button" id="setdata">Nhập</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th class="col-xs-1 col-sm-1 col-md-1">STT</th>
+            <th class="col-xs-2 col-sm-6 col-md-5">Họ tên</th>
+            <th class="col-xs-1 col-sm-1 col-md-13">Toán</th>
+            <th class="col-xs-1 col-sm-1 col-md-13">Lý</th>
+            <th class="col-xs-1 col-sm-1 col-md-13">Hóa</th>
+            <th class="col-xs-1 col-sm-2 col-md-13">Trung bình</th>
+        </tr>
+    </table>
+
+    <button class="col-" id="mathavg">Tính điểm trung bình</button>
+    <button class="col-" id="stu">Xác định học sinh giỏi</button>
+    <button class="col-" id="retest">Môn phải thi lại</button>
+
+
+    <script type="text/javascript">
+
+        var i=0;
+        $(document).ready(function(){
+            //điều kiện nhập dữ liệu
+            $('form').validate({
+                rules:{
+                    name:{required: true,minlength: 2},
+                    math:{required: true,range: [0, 10]},
+                    physical:{required: true,range: [0, 10]},
+                    chemistry: {required: true,range: [0, 10]}
+                },
+                messages:{
+                    name:{required:"Vui lòng nhập tên",minlength:"Tên không hợp lệ"},
+                    math:{required:"Vui lòng nhập điểm",range:"Điểm không hợp lệ"},
+                    physical:{required:"Vui lòng nhập điểm",range:"Điểm không hợp lệ"},
+                    chemistry: {required:"Vui lòng nhập điểm",range:"Điểm không hợp lệ"}
+                }
+            });
+
+            //đưa input data vào bảng
+            $('#setdata').click(function(){
+                i++;
+                name = $("#name").val();
+	            math = $("#math").val();
+	            chemistry = $("#chemistry").val();
+	            physical = $("#physical").val();
+                $("input").val("");
+                addRow();
+        
+            });
+
+            //calc avg score
+            $('#mathavg').click(function(){
+                for(var j=1;j<=i;j++){
+                    $("#" + j).each(function() {
+                        avg=((parseFloat($(this).find("td").eq(2).html())+parseFloat($(this).find("td").eq(3).html())+parseFloat($(this).find("td").eq(4).html()))/3).toFixed(1),
+                        $(this).find("td:last").text(avg)
+                    });
+                }
+            });
+
+            //xác định học sinh giỏi (score>=8)
+            $('#stu').click(function(){
+                for(var j=1;j<=i;j++){
+                    if($("#" + j).find("td:last").html()>=8.0){
+                        $("#" + j).children().css({"background-color":"red"});
+                        //$("#" + j).children().addClass('excellent');
+                    }
+                }
+            });
+
+            //xác định môn phải thi lại (score<4)
+            $('#retest').click(function(){
+                for(var j=1;j<=i;j++){
+                    for(var z=2;z<5;z++){
+                        if($("#" + j).find("td").eq(z).html()<4.0){
+                            $("#" + j).find("td").eq(z).css({"background-color":"green"});
+                        }
+                    }
+                }
+            });
+        });
+
+        //add a new row
+        function addRow(){
+            row = $("<tr></tr>").attr("id", i);
+            $('table').append(row);
+            $("#" + i).append($("<td></td>").text(i));
+            $("#" + i).append($("<td></td>").text(name));
+            $("#" + i).append($("<td></td>").text(math));
+            $("#" + i).append($("<td></td>").text(chemistry));
+            $("#" + i).append($("<td></td>").text(physical));
+            $("#" + i).append($("<td></td>").text("?"));            
+        }
+
+    </script>
+
+</body>
+</html>

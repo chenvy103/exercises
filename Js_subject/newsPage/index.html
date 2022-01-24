@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pj4</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript">
+        var key='a5c3f1f35e72b1120b8131f04c01cf4a';
+        
+        
+        $(document).ready(function(){
+
+            $('#search-i').click(function(){
+                $('.backdrop').animate({'opacity':'.50'});
+                $('.backdrop, .lightbox').css('display','block');
+            });
+
+            $('.close').click(function(){
+                close();
+            });
+            $('.backdrop').click(function(){
+                close();
+            });
+
+            $('#search').click(function(){
+                var input= $("#keyword").val();
+                var sort=$("input[name='sort']:checked").val();
+                close();
+                
+                console.log(sort);
+                fetch('https://gnews.io/api/v4/search?q='+input+'&token='+key+'&lang=en&sortby='+sort,load())
+                    .then(function (response) {
+                        success();
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                        myFunction(data.articles);
+                    });
+
+            });
+
+
+            
+
+        });
+
+        function close(){
+            $('.backdrop').animate({'opacity':'0'},function(){
+                $('.backdrop, .lightbox').css('display','none');
+            });
+        };
+
+        function load(){$('.loading').css('display','block');}
+        function success(){$('.loading').css('display','none');};
+
+        fetch('https://gnews.io/api/v4/top-headlines?&token='+key+'&lang=en')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                myFunction(data.articles);
+            });
+
+        function myFunction(arr){
+            var out = "";
+            var i;
+            for(i = 0; i < arr.length; i++) {
+                out += 
+                '<div class="box" id="' +i+'">'+
+                '<div class="col col-sm-3 col-md-3"><img src="'+ arr[i].image+ '"></div>'+
+                '<div class="col col-sm-9 col-md-9">'+
+                    '<a href="' + arr[i].url + '" target="_blank">' + arr[i].title + '</a><br>'+
+                    '<em>'+arr[i].publishedAt+ '</em><br>'+
+                    '<p>'+arr[i].description+ '</p>'
+                +'</div></div>';
+                
+            }
+            document.getElementById("newsbox").innerHTML = out;
+        };
+
+        
+
+        
+
+    </script>
+</head>
+<body>
+
+    <div id="topnav">
+        <h1>My News 
+            <i id="search-i" class="fa fa-search"></i>
+            
+        </h1>
+    </div>
+    <div class="backdrop"></div>
+    <div class="loading">
+        <img src="images/load.gif" alt="Loading...">
+    </div>
+    <div class="lightbox">
+        <div class="close">X</div>
+        <form id="searchbox">
+            <label for="keyword" >Keywords</label>
+            <input class="keyword" type="text" id="keyword" name="keyword"/>
+            <button type="button" id="search">Search</button><br>
+            <span>Sắp xếp tìm kiếm tin tức theo:</span>
+            <label><input type="radio" name="sort" value="publishedAt" checked>Gần đây nhất</label>
+            <label><input type="radio" name="sort" value="relevance">Độ liên quan</label>
+            
+        </form>
+    </div>
+
+    <div id="newsbox">
+        
+    </div>
+
+
+</body>
+</html>
